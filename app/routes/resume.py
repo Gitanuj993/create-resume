@@ -7,7 +7,7 @@ from app.services.resume_service import generate_resume
 router = APIRouter(prefix="/resume",tags=["Resume"])
 
 @router.post("/generate")
-async def generate_resume(data:ResumeRequest) :
+def generate_resume(data:ResumeRequest) :
   pdf_path = generate_resume(data)
   return FileResponse(
     path=pdf_path,
