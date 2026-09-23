@@ -9,4 +9,8 @@ router = APIRouter(prefix="/resume",tags=["Resume"])
 @router.post("/generate")
 async def generate_resume(data:ResumeRequest) :
   pdf_path = generate_resume(data)
-  return { "msg" : " request recieved successfully" }
+  return FileResponse(
+    path=pdf_path,
+    media_type="application/pdf",
+    filename="resume.pdf"
+  )
