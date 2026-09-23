@@ -16,6 +16,10 @@ app = FastAPI(title="Resume Generation Service",descrption="API for generating r
 async def health() :
   return { "message" : "Healthy" }
 
+@app.get("/")
+async def home() :
+  return { "message" : "App is running" }
+  
 # include router
 app.include_router(resume_router)
 
