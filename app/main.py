@@ -1,23 +1,21 @@
 """
 API Gateway
 """
-
 from fastapi import FastAPI
-from pydantic import BaseModel
+from app.routes.resume import router as resume_router
 
-# create app
-app = FastAPI()
+app = FastAPI(title="Resume Generation Service",descrption="API for generating resume",version="1.0.0")
+
+# -------------------------
+# Route
+# -------------------------
+
 
 # Health
 @app.get("/health")
 async def health() :
   return { "message" : "Healthy" }
 
-# data recieve from json
-@app.post("/create_resume")
-async def create_resume():
-  pass
-
-
-
+# include router
+app.include_router(resume_router)
 
